@@ -129,7 +129,7 @@ async fn msg_handler(mut message: Message, target_id: u64, server: ArcStr) -> Re
     trace!(element = ?single,"正在处理消息链中的元素");
     match single {
       MessageType::Text { content } => {
-        let content = format!("{}: {}", sender_name, content);
+        let content = format!("【{}】{}", sender_name, content);
         let receipt = if let Some(reply_to) = &message.reply {
           let local_id = DB.get_msg_id_1(&target_id, reply_to)?;
           match local_id {
